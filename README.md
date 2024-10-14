@@ -8,5 +8,3 @@ pip install -r requirements.txt --upgrade
 
 ## 2. Run the app
 
-```bash
-
