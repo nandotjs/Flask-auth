@@ -6,7 +6,7 @@ from flask_login import LoginManager, login_user, current_user, logout_user, log
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'super-secret-key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:admin123@127.0.0.1:3306/flask-crud'
 
 login_manager = LoginManager(app)
 
@@ -85,7 +85,7 @@ def update_user(user_id):
 @login_required
 def delete_user(user_id):
     user = User.query.get(user_id)
-    
+
     if user and user.id != current_user.id:
         db.session.delete(user)
         db.session.commit()
